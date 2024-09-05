@@ -295,42 +295,6 @@
               <!-- Toast Link -->
               <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
 
-              <!-- <script>
-                contactForm.addEventListener("submit", async (e) => {
-                  e.preventDefault();
-
-                  const formData = new FormData(contactForm);
-                  const contactData = Object.fromEntries(formData.entries());
-                  console.log("contactData:", contactData); // Log the data to check what is being sent
-
-                  try {
-                    const response = await axios.post(
-                      "http://localhost:3000/api/contact/create",
-                      contactData,
-                      {
-                        withCredentials: true,
-                      }
-                    );
-                    iziToast.success({
-                      title: "Success",
-                      message: "Contact submitted successfully.",
-                      position: "topRight",
-                    });
-                    contactForm.reset(); // Clear the form after successful submission
-                  } catch (error) {
-                    console.error(
-                      "Contact Error:",
-                      error.response?.data.error.message
-                    );
-                    iziToast.error({
-                      title: "Error",
-                      message: "Contact failed. Please try again.",
-                      position: "topRight",
-                    });
-                  }
-                });
-              </script> -->
-
               <div class="result"></div>
             </div>
           </div>

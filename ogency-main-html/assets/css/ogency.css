@@ -4659,6 +4659,10 @@ h6 {
     position: relative;
     margin-bottom: 25px;
   }
+    .about-three__thumb--one img {
+      mix-blend-mode: luminosity;
+      width:85vw ;
+    }
 }
 
 .about-three__thumb--one img {

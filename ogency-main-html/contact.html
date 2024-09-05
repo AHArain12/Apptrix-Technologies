@@ -225,18 +225,15 @@
             </h5>
             <h2 class="section-title__title">
               Feel free to get in touch<br />
-              with jessica
             </h2>
           </div>
           <!-- section-title -->
           <div class="contact-one__left text-center">
             <div class="contact-one__form-box">
               <form
-                id="contact-form"
                 action="https://formsubmit.co/hani34584@gmail.com"
                 method="POST"
                 class="contact-one__form contact-form-validated"
-                novalidate="novalidate"
               >
                 <div class="row">
                   <div class="col-md-6">
@@ -567,38 +564,5 @@
     <script src="assets/vendors/countdown/countdown.min.js"></script>
     <!-- template js -->
     <script src="assets/js/ogency.js"></script>
-
-    <script>
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault(); // Prevent default form submission
-
-          const formData = new FormData(this);
-
-          try {
-            const response = await fetch(
-              "http://localhost:3000/api/contact/create",
-              {
-                method: "POST",
-                body: formData,
-                headers: {
-                  Accept: "application/json",
-                },
-              }
-            );
-
-            const result = await response.json();
-            if (response.ok) {
-              alert("Contact created successfully!");
-            } else {
-              alert("Error: " + result.message);
-            }
-          } catch (error) {
-            console.error("Error:", error);
-            alert("An error occurred while submitting the form.");
-          }
-        });
-    </script>
   </body>
 </html>

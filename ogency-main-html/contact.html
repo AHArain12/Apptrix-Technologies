@@ -231,9 +231,11 @@
           <div class="contact-one__left text-center">
             <div class="contact-one__form-box">
               <form
+                id="contact-form"
                 action="https://formsubmit.co/ayeshaafzal1573@gmail.com"
                 method="POST"
                 class="contact-one__form contact-form-validated"
+                novalidate="novalidate"
               >
                 <div class="row">
                   <div class="col-md-6">
@@ -294,6 +296,42 @@
               <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
               <!-- Toast Link -->
               <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
+              <!-- <script>
+                contactForm.addEventListener("submit", async (e) => {
+                  e.preventDefault();
+
+                  const formData = new FormData(contactForm);
+                  const contactData = Object.fromEntries(formData.entries());
+                  console.log("contactData:", contactData); // Log the data to check what is being sent
+
+                  try {
+                    const response = await axios.post(
+                      "http://localhost:3000/api/contact/create",
+                      contactData,
+                      {
+                        withCredentials: true,
+                      }
+                    );
+                    iziToast.success({
+                      title: "Success",
+                      message: "Contact submitted successfully.",
+                      position: "topRight",
+                    });
+                    contactForm.reset(); // Clear the form after successful submission
+                  } catch (error) {
+                    console.error(
+                      "Contact Error:",
+                      error.response?.data.error.message
+                    );
+                    iziToast.error({
+                      title: "Error",
+                      message: "Contact failed. Please try again.",
+                      position: "topRight",
+                    });
+                  }
+                });
+              </script> -->
 
               <div class="result"></div>
             </div>
@@ -528,5 +566,38 @@
     <script src="assets/vendors/countdown/countdown.min.js"></script>
     <!-- template js -->
     <script src="assets/js/ogency.js"></script>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          const formData = new FormData(this);
+
+          try {
+            const response = await fetch(
+              "http://localhost:3000/api/contact/create",
+              {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              }
+            );
+
+            const result = await response.json();
+            if (response.ok) {
+              alert("Contact created successfully!");
+            } else {
+              alert("Error: " + result.message);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while submitting the form.");
+          }
+        });
+    </script>
   </body>
 </html>
